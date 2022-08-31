@@ -18,7 +18,7 @@ describe('eventMapper', () => {
       jest.setSystemTime(now)
     })
 
-    it('should return import findings command on create event', async () => {
+    it('should return import findings command on create event', () => {
       // Given
       const mockEvent = {
         action: 'create',
@@ -30,7 +30,7 @@ describe('eventMapper', () => {
       }
 
       // When
-      const result = await mapEventToCommand(mockEvent)
+      const result = mapEventToCommand(mockEvent)
 
       // Then
       expect(result).toBeInstanceOf(BatchImportFindingsCommand)
@@ -47,12 +47,12 @@ describe('eventMapper', () => {
       }])
     })
 
-    it('should return update findings command on dismiss event', async () => {
+    it('should return update findings command on dismiss event', () => {
       // Given
       const mockEvent = { action: 'dismiss', alert: { id: 'mock-alert-id' } }
 
       // When
-      const result = await mapEventToCommand(mockEvent)
+      const result = mapEventToCommand(mockEvent)
 
       // Then
       expect(result).toBeInstanceOf(BatchUpdateFindingsCommand)
@@ -69,12 +69,12 @@ describe('eventMapper', () => {
       )
     })
 
-    it('should return update findings command on resolve event', async () => {
+    it('should return update findings command on resolve event', () => {
       // Given
       const mockEvent = { action: 'resolve', alert: { id: 'mock-alert-id' } }
 
       // When
-      const result = await mapEventToCommand(mockEvent)
+      const result = mapEventToCommand(mockEvent)
 
       // Then
       expect(result).toBeInstanceOf(BatchUpdateFindingsCommand)
@@ -91,7 +91,7 @@ describe('eventMapper', () => {
       )
     })
 
-    it('should throw error on invalid event', async () => {
+    it('should throw error on invalid event', () => {
       // Given
       const mockEvent = { id: 'invalid-event' }
 
